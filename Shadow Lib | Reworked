@@ -79,7 +79,7 @@ local TextLabel = Instance.new("TextLabel")
 --Properties:
 
 Screen.Name = "By Shaddow"
-Screen.Parent = game:WaitForChild("CoreGui")
+Screen.Parent = game:GetService("CoreGui")
 Screen.Enabled = true
 
 Top.Name = "Top"
