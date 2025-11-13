@@ -40,16 +40,29 @@ end)
 utility:Button("sbU", function()
     loadstring(game:HttpGet"https://raw.githubusercontent.com/rsXez/RS/refs/heads/main/sbU.lua")()
 end)
+utility:Slider("Растяг экрана", 10, 100, 65, function(value)
+    local stretchValue = value / 100
+    getgenv().Resolution = {
+        [".gg/scripters"] = stretchValue
+    }
+    local Camera = workspace.CurrentCamera
+    if getgenv().gg_scripters == nil then
+        game:GetService("RunService").RenderStepped:Connect(function()
+            Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, getgenv().Resolution[".gg/scripters"], 0, 0, 0, 1)
+        end)
+    end
+    getgenv().gg_scripters = "Aori0001"
+end)
 
 -- === ВКЛАДКА HUBS ===
 local hubs = win:Server("Hubs", "http://www.roblox.com/asset/?id=6031302933")
 
-local universal = hubs:Channel("Hubs")
+local universal = hubs:Channel("Script hub")
 universal:Button("XVC Hub (150+ Games)", function()
     loadstring(game:HttpGet"https://rawscripts.net/raw/Universal-Script-XVC-Hub-150-Games-keyless-47283")()
 end)
 
-local specific = hubs:Channel("Popular")
+local specific = hubs:Channel("Popular Games")
 specific:Button("Evade - WhakazhiHubX | whakizashi-key", function()
     loadstring(game:HttpGet"https://raw.githubusercontent.com/rsXez/RS/refs/heads/main/WhakazhiHubX.lua")()
 end)
@@ -72,7 +85,7 @@ end)
 local info = win:Server("Info", "http://www.roblox.com/asset/?id=6031280882")
 local about = info:Channel("About")
 about:Label("RS Hub v1.0")
-about:Label("Total Scripts: 13")
+about:Label("Total Scripts: 14")
 about:Label("Author: xd bro")
 about:Button("Copy Job ID", function()
     setclipboard(game.JobId)
